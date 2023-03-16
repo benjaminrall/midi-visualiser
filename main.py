@@ -64,6 +64,7 @@ def main(argv: list[str]) -> None:
     pygame.display.update()
 
     # Opens sound output to default MIDI output
+    mido.set_backend('mido.backends.pygame')
     sound_output = mido.open_output()
 
     # Attempts to load preset songs
