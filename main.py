@@ -2,6 +2,7 @@ import os
 import sys
 import mido
 import pygame
+import pygame.midi
 from song import Song
 from piano_display import PianoDisplay
 from piano_display_settings import PianoDisplaySettings
@@ -50,7 +51,7 @@ def load_preset(index: int, presets: list[str], sound_output: mido.ports.IOPort,
     # Loads and returns the preset song
     return load_song(presets[index], sound_output, display_settings, verbose)
 
-def main(argv: list[str]) -> None:
+def main(argv: list[str], sound_output: mido.ports.IOPort) -> None:
     """Main program entry point."""
     # Sets up pygame window and piano display
     display = PianoDisplay(DISPLAY_SETTINGS)
@@ -62,10 +63,6 @@ def main(argv: list[str]) -> None:
     # Initial empty draw to the window
     display.draw(win)
     pygame.display.update()
-
-    # Opens sound output to default MIDI output
-    mido.set_backend('mido.backends.pygame')
-    sound_output = mido.open_output()
 
     # Attempts to load preset songs
     current_preset_index = 0
@@ -123,4 +120,13 @@ def main(argv: list[str]) -> None:
         pygame.display.update()
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    try:
+        # Opens sound output to default pygame MIDI output
+        pygame.init()
+        pygame.midi.init()
+        mido.set_backend('mido.backends.pygame')
+        sound_output = mido.open_output()
+        main(sys.argv[1:], sound_output)
+    except KeyboardInterrupt:
+        sound_output.close()
+        pygame.quit()
