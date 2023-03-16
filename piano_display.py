@@ -4,6 +4,8 @@ from song import Song
 from piano_display_settings import PianoDisplaySettings
 
 class PianoDisplay:
+    """A class to display a song playing on a piano."""
+
     def __init__(self, settings: PianoDisplaySettings) -> None:
         self.settings = settings
         

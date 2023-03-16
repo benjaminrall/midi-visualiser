@@ -12,8 +12,11 @@ DISPLAY_SETTINGS = PianoDisplaySettings()
 # Path to a folder containing MIDI files to be used as preset songs
 PRESET_SONGS_FOLDER = "songs"   
 
-def load_song(file_name: str, sound_output: mido.ports.IOPort, display_settings: PianoDisplaySettings, verbose: bool = True) -> Song | None:
-    """Attempts to load a song from a given filename. Returns None if the song couldn't be loaded."""
+def load_song(file_name: str, sound_output: mido.ports.IOPort, 
+              display_settings: PianoDisplaySettings, verbose: bool = True) -> Song | None:
+    """ Attempts to load a song from a given filename. 
+        Returns None if the song couldn't be loaded.
+    """
     # Adds MIDI file extension if it wasn't specified
     if not file_name.endswith(".mid"):
         file_name += ".mid"
@@ -29,8 +32,11 @@ def load_song(file_name: str, sound_output: mido.ports.IOPort, display_settings:
             print(f"Failed to load MIDI file '{file_name}': {e}.")
         return None
     
-def load_preset(index: int, presets: list[str], sound_output: mido.ports.IOPort, display_settings: PianoDisplaySettings, verbose: bool = True) -> Song | None:
-    """Attempts to load a preset with a given index from the preset songs folder. Returns None if the song couldn't be loaded."""
+def load_preset(index: int, presets: list[str], sound_output: mido.ports.IOPort, 
+                display_settings: PianoDisplaySettings, verbose: bool = True) -> Song | None:
+    """ Attempts to load a preset with a given index from the preset songs folder. 
+        Returns None if the song couldn't be loaded.
+    """
     # Checks that there are preset songs
     if len(presets) == 0:
         if verbose:
