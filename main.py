@@ -122,7 +122,6 @@ def main(argv: list[str], sound_output: mido.ports.IOPort) -> None:
 if __name__ == "__main__":
     try:
         # Opens sound output to default pygame MIDI output
-        pygame.init()
         pygame.midi.init()
         mido.set_backend('mido.backends.pygame')
         sound_output = mido.open_output()
