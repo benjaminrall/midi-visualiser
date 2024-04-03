@@ -1,8 +1,10 @@
 # MIDI Visualiser
-Program to visualise MIDI songs on a virtual piano. 
-Uses the mido library for loading and interpreting MIDI files, and pygame for the display. 
+
+Program to visualise MIDI songs on a virtual piano.
+Uses the mido library for loading and interpreting MIDI files, and pygame for the display.
 
 ## Screenshots
+
 ![screenshot_0](imgs/screenshot_0.png)
 Simple 2 channel piano song.
 
@@ -10,25 +12,31 @@ Simple 2 channel piano song.
 Rush E
 
 ## Instructions for use
+
 Clone the project
+
 ```bash
-git clone https://github.com/benjaminrall/midi-visualiser.git
+git clone git@github.com:benjaminrall/midi-visualiser.git
 ```
 
 Navigate to the project directory
+
 ```bash
 cd midi-visualiser
 ```
 
 Install required packages
+
 ```bash
 pip install -r requirements.txt
 ```
 
 Run program
+
 ```bash
 python main.py [path]
 ```
+
 If a valid path to a MIDI file is specified then it will be loaded and run.
 Otherwise, it will default to loading preset songs from the 'songs' folder.
 
