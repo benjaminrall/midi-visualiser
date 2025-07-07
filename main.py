@@ -103,7 +103,7 @@ def main(argv: list[str], sound_output: mido.ports.IOPort) -> None:
                 elif event.key == pygame.K_SPACE and song is not None:
                     song.toggle_playing()
                 # Inputting new song name
-                elif event.key == pygame.K_i:
+                elif event.key == pygame.K_i: 
                     if song is not None:
                         song.stop()
                     if (new_song := load_song(input("Enter MIDI file name: "), sound_output, DISPLAY_SETTINGS)) is not None:
