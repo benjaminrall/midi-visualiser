@@ -91,7 +91,6 @@ class Visualiser:
             # Handles quitting the Pygame window
             if event.type == pygame.QUIT:
                 self.running = False
-                return
             # Stops song if the window is moved to prevent audio misalignment
             elif event.type == pygame.WINDOWMOVED and self.song:
                 self.song.stop()
@@ -101,8 +100,11 @@ class Visualiser:
     
     def _handle_keypress(self, key: int):
         """Handles all Pygame key press events."""
+        # Quitting the game with 'Q'
+        if key == pygame.K_q:
+            self.running = False
         # Resetting the current song with 'R'
-        if key == pygame.K_r and self.song:
+        elif key == pygame.K_r and self.song:
             self.song.reset()
         # Playing/pausing the current song with space
         elif key == pygame.K_SPACE and self.song:

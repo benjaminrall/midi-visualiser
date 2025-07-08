@@ -1,35 +1,79 @@
-# MIDI Visualiser
-A real-time MIDI player and visualiser built in Python.
+# Python MIDI Visualiser 🎹
+
+A real-time MIDI player and visualiser built with Python and Pygame.
+
+This tool can be run from the command line to open any .mid file as a dynamic, scrolling piano roll, synchronising the on-screen notes with the audio output.
 
 ![MIDI Visualiser Demonstration GIF](https://github.com/user-attachments/assets/6bbbe8f7-e93b-4289-8eb1-d0823b3c3bfe)
 
-## Instructions for use
-Clone the project
-```bash
-git clone https://github.com/benjaminrall/midi-visualiser.git
+## Key Features
+
+- 🎵 **MIDI File Parsing**: Uses the Mido library to load and interpret note events and channels from MIDI files
+- 🎹 **Real-time Piano Roll**: Dynamically renders scrolling notes as the music plays
+- 🔊 **Synchronised Audio**: Plays the MIDI data through Pygame's audio mixer, synchronised with the visuals
+- ⏯️ **Playback Control**: Includes standard playback features like play, pause, and restart, controlled via keyboard shortcuts
+- 🎨 **Multi-channel Colouring**: Automatically assigns different, clear colours to notes from different MIDI channels
+
+## Installation and Usage
+
+To use the tool, you can simply install it using `pip`:
+
+```sh
+pip install midi-visualiser
 ```
 
-Navigate to the project directory
-```bash
-cd midi-visualiser
-```
+It can then be used in the command line through the `visualiser` command. The command has two different modes:
 
-Install required packages
-```bash
-pip install -r requirements.txt
-```
+1. **Visualising a single song**:
 
-Run program
-```bash
-python main.py [path]
-```
-If a valid path to a MIDI file is specified then it will be loaded and run.
-Otherwise, it will default to loading preset songs from the 'songs' folder.
+   ```sh
+   visualiser path/to/your/song.mid
+   ```
 
-Use the space key to play/pause the MIDI file. The current state is indicated by a play/pause icon in the top left of the window. The song will automatically pause if the window is moved to avoid desync.
+2. **Loading a playlist from a directory**:
 
-Once a song finishes playing, it will automatically reset to the start of the file. You can do this manually at any time by pressing the R key.
+   ```sh
+   visualiser path/to/your/songs/folder/
+   ```
 
-To switch to a new MIDI file, press the I key and then type a new file path into the terminal.
+   When a path to a directory is provided, all `.mid` files in the directory will be loaded and can be switched between using the left and right arrow keys.
 
-You can switch between the preset songs by using the left and right arrow keys.
+## Playback Controls
+
+The following keyboard shortcuts are available while the visualiser window is active:
+
+| Key           | Action                                                   |
+| :------------ | :------------------------------------------------------- |
+| **Space**     | Play / Pause the current song.                           |
+| **R**         | Reset the current song to the start.                     |
+| **←** / **→** | Cycle to the previous/next song in the current playlist. |
+| **Q**         | Quit the application.                                    |
+
+## Development Setup
+
+This project uses [uv](https://github.com/astral-sh/uv) as a package and virtual environment manager. To set up the project for development, follow these steps:
+
+1. **Clone the repository**:
+
+   ```sh
+   git clone https://github.com/benjaminrall/midi-visualiser.git
+   cd midi-visualiser
+   ```
+
+2. **Create the virtual environment using [uv](https://github.com/astral-sh/uv)**:
+
+   ```sh
+   uv venv
+   ```
+
+3. **Install the project in editable mode**:
+
+   ```sh
+   uv pip install -e .
+   ```
+
+   This will allow use of the `visualiser` command such that any changes made to the source code will be immediately reflected.
+
+## License
+
+This project is licensed under the **MIT License**. See the [`LICENSE`](./LICENSE) file for details.
