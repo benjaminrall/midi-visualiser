@@ -22,7 +22,7 @@ To use the tool, you can simply install it using `pip`:
 pip install midi-visualiser
 ```
 
-It can then be used in the command line through the `visualiser` command. The command has three different modes:
+It can then be used in the command line through the `visualiser` command. The command has two different modes:
 
 1. **Visualising a single song**:
 
