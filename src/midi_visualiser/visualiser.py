@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 class Visualiser:
     """Manages the Pygame visualiser window and main application loop."""
 
-    DEFAULT_SONGS_FOLDER = "songs/"
+    DEFAULT_SONGS_FOLDER = os.path.join(BASE_DIR, "songs")
 
     def __init__(self, path: str | None):
         """Initialises the visualiser and loads the initial song(s)."""

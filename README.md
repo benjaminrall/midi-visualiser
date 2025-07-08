@@ -22,7 +22,7 @@ To use the tool, you can simply install it using `pip`:
 pip install midi-visualiser
 ```
 
-It can then be used in the command line through the `visualiser` command. The command has two different modes:
+It can then be used in the command line through the `visualiser` command. The command has three different modes:
 
 1. **Visualising a single song**:
 
@@ -37,6 +37,10 @@ It can then be used in the command line through the `visualiser` command. The co
    ```
 
    When a path to a directory is provided, all `.mid` files in the directory will be loaded and can then be switched between using the left and right arrow keys.
+
+### Example Songs
+
+The project is packaged with 10 example songs, which will be automatically loaded when the `visualiser` command is run without specifying any arguments.
 
 ## Playback Controls
 
