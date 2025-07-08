@@ -45,7 +45,7 @@ The following keyboard shortcuts are available while the visualiser window is ac
 | Key           | Action                                                   |
 | :------------ | :------------------------------------------------------- |
 | **Space**     | Play / Pause the current song.                           |
-| **R**         | Reset the current song to the start.                     |
+| **R**         | Reset the current song to the beginning.                 |
 | **←** / **→** | Cycle to the previous/next song in the current playlist. |
 | **Q**         | Quit the application.                                    |
 
