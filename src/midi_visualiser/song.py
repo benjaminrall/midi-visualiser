@@ -1,8 +1,8 @@
 import mido
 import time
 from collections import defaultdict
-from piano_display_settings import PianoDisplaySettings
-from scrolling_note import ScrollingNote
+from .piano_display_settings import PianoDisplaySettings
+from .scrolling_note import ScrollingNote
 
 class Song:
     """Class representing a song loaded from a MIDI file."""

@@ -2,7 +2,7 @@ import argparse
 import pygame
 import pygame.midi
 import mido
-from visualiser import Visualiser
+from .visualiser import Visualiser
 
 def main():
     """Initializes Pygame and Mido, parses command line arguments, and runs the visualiser."""

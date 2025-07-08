@@ -5,8 +5,8 @@ import colorsys
 
 def generate_random_colour() -> tuple[int, int, int]:
     """Generates a random colour by using HLS and then converting to RGB."""
-    h,l,s = random.random(), .4 + random.random() / 5, .8 + random.random() / 5
-    return tuple([int(256*i) for i in colorsys.hls_to_rgb(h,l,s)])
+    H, L, S = random.random(), .4 + random.random() / 5, .8 + random.random() / 5
+    return tuple([int(256 * i) for i in colorsys.hls_to_rgb(H, L, S)])
 
 @dataclass
 class ChannelColour:

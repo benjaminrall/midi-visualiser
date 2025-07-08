@@ -1,11 +1,9 @@
 import os
-import sys
 import mido
 import pygame
-import pygame.midi
-from song import Song
-from piano_display import PianoDisplay
-from piano_display_settings import PianoDisplaySettings
+from .song import Song
+from .piano_display import PianoDisplay
+from .piano_display_settings import PianoDisplaySettings
 
 class Visualiser:
     """Manages the Pygame visualiser window and main application loop."""

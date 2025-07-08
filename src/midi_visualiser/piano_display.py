@@ -1,7 +1,7 @@
 import os
 import pygame
-from song import Song
-from piano_display_settings import PianoDisplaySettings
+from .song import Song
+from .piano_display_settings import PianoDisplaySettings
 
 class PianoDisplay:
     """Class to manage rendering of the piano and scrolling notes using Pygame."""
