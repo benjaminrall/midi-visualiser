@@ -3,6 +3,8 @@ import pygame
 from .song import Song
 from .piano_display_settings import PianoDisplaySettings
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class PianoDisplay:
     """Class to manage rendering of the piano and scrolling notes using Pygame."""
 
@@ -61,8 +63,8 @@ class PianoDisplay:
         
         if self.settings.show_play_icon:
             icon_size = (self.settings.key_width * 2, self.settings.key_width * 2)
-            self.play_icon = pygame.transform.scale(pygame.image.load(os.path.join("imgs", "play.png")), icon_size)
-            self.pause_icon = pygame.transform.scale(pygame.image.load(os.path.join("imgs", "pause.png")), icon_size)
+            self.play_icon = pygame.transform.scale(pygame.image.load(os.path.join(BASE_DIR, "imgs", "play.png")), icon_size)
+            self.pause_icon = pygame.transform.scale(pygame.image.load(os.path.join(BASE_DIR, "imgs", "pause.png")), icon_size)
 
     def _generate_key_surfaces(self, key_indices: set[int], color: tuple[int, int, int], border: int) -> tuple[pygame.Surface, pygame.Surface]:
         """Generates the fill and outline surfaces for the given set of keys."""

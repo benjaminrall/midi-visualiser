@@ -5,6 +5,8 @@ from .song import Song
 from .piano_display import PianoDisplay
 from .piano_display_settings import PianoDisplaySettings
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class Visualiser:
     """Manages the Pygame visualiser window and main application loop."""
 
@@ -30,7 +32,7 @@ class Visualiser:
         self.win = pygame.display.set_mode((self.display.width, self.display.height))
         pygame.display.set_caption("Piano MIDI Visualiser")
         try:
-            icon_img = pygame.image.load(os.path.join("imgs", "icon.png"))
+            icon_img = pygame.image.load(os.path.join(BASE_DIR, "imgs", "icon.png"))
             pygame.display.set_icon(icon_img)
         except pygame.error as e:
             print(f"Could not load window icon: {e}")
