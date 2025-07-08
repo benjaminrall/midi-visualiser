@@ -1,87 +1,111 @@
+from dataclasses import dataclass, field
 from collections import defaultdict
 import random
 import colorsys
 
-# Default Display Settings
-KEY_WIDTH = 25
-NOTE_TIME = 2
-SCROLL_HEIGHT_RATIO = 0.4
-SCROLLING_NOTES = True
-SHOW_PIANO_DIVIDER = True
-SHOW_OCTAVE_DIVIDER = True
-SHOW_PLAY_ICON = True
-BACKGROUND_COLOUR = (60, 60, 60)
-OCTAVE_DIVIDER_COLOUR = (80, 80, 80)
-PIANO_DIVIDER_COLOUR = (200, 0, 0)
-WHITE_KEY_PRESSED_COLOUR = (255, 0, 0)
-BLACK_KEY_PRESSED_COLOUR= (127, 0, 0)
-SCROLLING_NOTE_COLOUR = (200, 0, 0)
-
 def generate_random_colour() -> tuple[int, int, int]:
-    """Generates random colour using HLS and converts to RGB."""
+    """Generates a random colour by using HLS and then converting to RGB."""
     h,l,s = random.random(), .4 + random.random() / 5, .8 + random.random() / 5
     return tuple([int(256*i) for i in colorsys.hls_to_rgb(h,l,s)])
 
+@dataclass
 class ChannelColour:
-
-    colour_parameters = 3
-
-    """A class to represent key colours for a specific channel."""
-    def __init__(self, 
-        white_key_pressed_colour=WHITE_KEY_PRESSED_COLOUR,
-        black_key_pressed_colour=BLACK_KEY_PRESSED_COLOUR,
-        scrolling_note_colour=SCROLLING_NOTE_COLOUR
-    ) -> None:
-        self.white_key_pressed_colour = white_key_pressed_colour
-        self.black_key_pressed_colour = black_key_pressed_colour
-        self.scrolling_note_colour = scrolling_note_colour
+    """
+    Data class representing the colour scheme for a single MIDI channel.
+    Allows different colours to be specified for white/black keys and scrolling notes.
+    """
+    white_key_pressed_colour: tuple[int, int, int]
+    black_key_pressed_colour: tuple[int, int, int]
+    scrolling_note_colour: tuple[int, int, int]
 
     @staticmethod
-    def random():
-        """Returns a random single colour channel colour object."""
-        return ChannelColour.single_colour(generate_random_colour())
+    def random() -> 'ChannelColour':
+        """Constructs a ChannelColour instance with a random monochromatic scheme.
+
+        Returns
+        -------
+        ChannelColour
+            An instance of ChannelColour where all colours are the same, random colour.
+        """
+        return ChannelColour.monochromatic(generate_random_colour())
     
     @staticmethod
-    def single_colour(colour):
-        """Returns a channel colour object with all options being one colour."""
-        return ChannelColour(*[colour for _ in range(ChannelColour.colour_parameters)])
+    def monochromatic(colour: tuple[int, int, int]) -> 'ChannelColour':
+        """Creates a ChannelColour instance with all colours set to the provided colour.
 
-# Default channel colours
-CHANNEL_COLOURS = [
-    ChannelColour.single_colour((255, 128, 20)),
-    ChannelColour.single_colour((0, 128, 255)),
-    ChannelColour.single_colour((150, 50, 255)),
-    ChannelColour.single_colour((0, 255, 0)),
-    ChannelColour.single_colour((255, 0, 0)),
-    ChannelColour.single_colour((150, 255, 255)),
-    ChannelColour.single_colour((255, 100, 255)),
-    ChannelColour.single_colour((0, 0, 255)),
-]
+        Parameters
+        ----------
+        colour : tuple[int, int, int]
+            The RGB tuple to use for all colour properties.
 
+        Returns
+        -------
+        ChannelColour
+            An instance of ChannelColour where all colours are the same.
+        """
+        return ChannelColour(
+            white_key_pressed_colour=colour,
+            black_key_pressed_colour=colour,
+            scrolling_note_colour=colour,
+        )
+
+@dataclass
 class PianoDisplaySettings:
-    """A class to store settings for a PianoDisplay object."""
+    """Data class storing all configurable settings for a PianoDisplay object."""
+    
+    key_width: int = 25
+    """Width in pixels of a single white key on the virtual piano."""
+    
+    note_time: float = 2.0
+    """The duration in seconds for a scrolling note to travel from the top of 
+    the screen to the piano."""
 
-    def __init__(self, 
-        key_width=KEY_WIDTH, note_time=NOTE_TIME, scroll_height_ratio=SCROLL_HEIGHT_RATIO, scrolling_notes=SCROLLING_NOTES, 
-        show_piano_divider=SHOW_PIANO_DIVIDER, show_octave_divider=SHOW_OCTAVE_DIVIDER, show_play_icon=SHOW_PLAY_ICON,
-        background_colour=BACKGROUND_COLOUR, octave_divider_colour=OCTAVE_DIVIDER_COLOUR, piano_divider_colour=PIANO_DIVIDER_COLOUR,
-        channel_colours=CHANNEL_COLOURS
-    ) -> None:
-        # General piano settings
-        self.key_width = key_width
-        self.note_time = note_time
-        self.scroll_height_ratio = scroll_height_ratio
-        self.scrolling_notes = scrolling_notes
-        
-        # Boolean display settings
-        self.show_piano_divider = show_piano_divider
-        self.show_octave_divider = show_octave_divider
-        self.show_play_icon = show_play_icon
+    scroll_height_ratio: float = 0.4
+    """The ratio between the piano's width and the height of the scrolling 
+    note area. A larger value makes the scrolling area taller."""
 
-        # Colour settings
-        self.background_colour = background_colour
-        self.octave_divider_colour = octave_divider_colour
-        self.piano_divider_colour = piano_divider_colour
-        self.channel_colours = defaultdict(lambda : ChannelColour.random())
-        for i in range(len(channel_colours)):
-            self.channel_colours[i] = channel_colours[i]
+    scrolling_notes: bool = True
+    """If True, scrolling notes will be displayed."""
+
+    show_piano_divider: bool = True
+    """If True, a horizontal line is drawn separating the piano from the 
+    scrolling note area."""
+
+    show_octave_divider: bool = True
+    """If True, vertical lines are drawn to separate octaves in the scrolling 
+    note area."""
+
+    show_play_icon: bool = True
+    """If True, a play/pause icon is shown in the top-left corner of the 
+    window to indicate the current playback state."""
+
+    background_colour: tuple[int, int, int] = (60, 60, 60)
+    """The background colour of the scrolling note area."""
+
+    piano_divider_colour: tuple[int, int, int] = (200, 0, 0)
+    """The colour of the horizontal line separating the piano and note area."""
+
+    octave_divider_colour: tuple[int, int, int] = (80, 80, 80)
+    """The colour of the vertical octave divider lines."""
+
+    channel_colours: defaultdict[int, ChannelColour] = field(
+        default_factory=lambda: defaultdict(ChannelColour.random)
+    )
+    """A dictionary mapping a MIDI channel number to a ChannelColour object.
+    Each time a new channel is encountered, a random colour is generated."""
+
+    def __post_init__(self):
+        """Populates the default channel colours after initialisation."""
+        default_colours = [
+            ChannelColour.monochromatic((255, 128, 20)),
+            ChannelColour.monochromatic((0, 128, 255)),
+            ChannelColour.monochromatic((150, 50, 255)),
+            ChannelColour.monochromatic((0, 255, 0)),
+            ChannelColour.monochromatic((255, 0, 0)),
+            ChannelColour.monochromatic((150, 255, 255)),
+            ChannelColour.monochromatic((255, 100, 255)),
+            ChannelColour.monochromatic((0, 0, 255)),
+        ]
+
+        for i, colour in enumerate(default_colours):
+            self.channel_colours[i] = colour

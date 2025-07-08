@@ -1,28 +1,48 @@
+from dataclasses import dataclass, field
+
+@dataclass
 class ScrollingNote:
-    """A class to represent a scrolling note on the display."""
+    """Data class representing a single scrolling note on the display."""
 
-    def __init__(self, note: int, channel: int, time: float, note_time: float, start_time: float, length = 0) -> None:
-        self.note = note                # The piano note value
-        self.channel = channel          # The note's channel value
-        self.length = length            # The length of the note in seconds
-        self.time = time                # The time difference between this note and the previous note
-        self.start_time = start_time    # The time that the note starts playing
-        self.note_time = note_time      # The time taken for a note to scroll through the scroll display
-        self.activate()
+    note: int
+    """The MIDI note value."""
 
-    def activate(self) -> None:
-        """Activates a scrolling note by setting its current and end time."""
-        self.current_time = 0
+    channel: int
+    """The MIDI channel this note belongs to."""
+
+    delta_time: float
+    """The time in seconds between the start of the previous note and this one."""
+
+    start_time: float
+    """The time in seconds from the start of the song to when this note should be played."""
+
+    note_time: float
+    """The total time it should take for the note to travel through the scrolling area."""
+
+    length: float = 0.0
+    """The duration in seconds that this note is held down."""
+
+    current_time: float = field(init=False, default=0.0)
+    """The time elapsed in seconds since this note became active on screen."""
+
+    end_time: float = field(init=False, default=0.0)
+    """The time at which the note should disappear from the screen."""
+
+    def activate(self, current_time: float = 0) -> None:
+        """Activates the note by setting its current and end time."""
+        self.current_time = current_time
         self.end_time = self.note_time + self.length
 
-    def get_percentage(self) -> float:
-        """Calculates how far the note is through its scroll."""
+    def update(self, delta_time: float) -> None:
+        """Updates the note's current time by the given delta from the last update."""
+        self.current_time += delta_time
+
+    @property
+    def scroll_percentage(self) -> float:
+        """How far the note has scrolled down the screen as a percentage."""
         return self.current_time / self.note_time
     
-    def update_time(self, delta_time: float) -> None:
-        """Updates the note's current time."""
-        self.current_time += delta_time
-    
-    def check_active(self) -> bool:
-        """Returns if the note is still active and in view."""
+    @property
+    def active(self) -> bool:
+        """Whether the note is still active and in view."""
         return self.current_time <= self.end_time
