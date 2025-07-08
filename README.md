@@ -1,13 +1,7 @@
 # MIDI Visualiser
-Program to visualise MIDI songs on a virtual piano. 
-Uses the mido library for loading and interpreting MIDI files, and pygame for the display. 
+A real-time MIDI player and visualiser built in Python.
 
-## Screenshots
-![screenshot_0](imgs/screenshot_0.png)
-Simple 2 channel piano song.
-
-![screenshot_1](imgs/screenshot_1.png)
-Rush E
+![MIDI Visualiser Demonstration GIF](https://github.com/user-attachments/assets/6bbbe8f7-e93b-4289-8eb1-d0823b3c3bfe)
 
 ## Instructions for use
 Clone the project
