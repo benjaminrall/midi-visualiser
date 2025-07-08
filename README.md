@@ -36,7 +36,7 @@ It can then be used in the command line through the `visualiser` command. The co
    visualiser path/to/your/songs/folder/
    ```
 
-   When a path to a directory is provided, all `.mid` files in the directory will be loaded and can be switched between using the left and right arrow keys.
+   When a path to a directory is provided, all `.mid` files in the directory will be loaded and can then be switched between using the left and right arrow keys.
 
 ## Playback Controls
 
