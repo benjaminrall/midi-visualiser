@@ -18,7 +18,7 @@ This tool can be run from the command line to open any `.mid` file as a dynamic,
 
 To use the tool, you can simply install it using `pip`:
 
-```sh
+```shell
 pip install midi-visualiser
 ```
 
@@ -26,13 +26,13 @@ It can then be used in the command line through the `visualiser` command. The co
 
 1. **Visualising a single song**:
 
-   ```sh
+   ```shell
    visualiser path/to/your/song.mid
    ```
 
 2. **Loading a playlist from a directory**:
 
-   ```sh
+   ```shell
    visualiser path/to/your/songs/folder/
    ```
 
