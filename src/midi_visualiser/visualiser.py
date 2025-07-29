@@ -96,7 +96,7 @@ class Visualiser:
             # Stops song if the window is moved to prevent audio misalignment
             elif event.type == pygame.WINDOWMOVED and self.song:
                 self.song.stop()
-            # Handles and key presses
+            # Handles any key presses
             elif event.type == pygame.KEYDOWN:
                 self._handle_keypress(event.key)
     
