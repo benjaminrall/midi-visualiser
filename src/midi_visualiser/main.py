@@ -19,9 +19,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        # Sets up Pygame and Mido for audio playback
-        pygame.init()
-        pygame.midi.init()
+        # Sets up Mido for audio playback
         mido.set_backend('mido.backends.pygame')
 
         # Runs the visualiser
@@ -29,10 +27,6 @@ def main():
         app.run()
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-    finally:
-        # Ensures Pygame always quits successfully
-        if pygame.get_init():
-            pygame.quit()
 
 if __name__ == "__main__":
     main()

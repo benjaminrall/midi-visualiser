@@ -28,7 +28,9 @@ class Visualiser:
             raise RuntimeError(f"No MIDI files found at the path: {path}")
         self.song: Song | None = self._load_song(self.song_files[self.current_song_index]) 
 
-        # Pygame display setup
+        # Pygame initialisation and setup
+        if not pygame.get_init():
+            pygame.init()
         self.win = pygame.display.set_mode((self.display.width, self.display.height))
         pygame.display.set_caption("Piano MIDI Visualiser")
         try:
@@ -36,6 +38,7 @@ class Visualiser:
             pygame.display.set_icon(icon_img)
         except pygame.error as e:
             print(f"Could not load window icon: {e}")
+        self.clock = pygame.time.Clock()
         
         # Application state
         self.running = False
@@ -83,6 +86,8 @@ class Visualiser:
             # Draws the current state to the Pygame window
             self.display.draw(self.win, self.song)
             pygame.display.update()
+
+            self.clock.tick(60)
 
         # Cleans up necessary resources
         self._cleanup()
