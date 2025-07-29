@@ -26,7 +26,7 @@ class Visualiser:
         self.song_files = self._get_song_files(path or Visualiser.DEFAULT_SONGS_FOLDER)
         if len(self.song_files) == 0:
             raise RuntimeError(f"No MIDI files found at the path: {path}")
-        self.song: Song | None = self._load_song(self.song_files[self.current_song_index]) 
+        self.song = self._load_song(self.song_files[self.current_song_index]) 
 
         # Pygame initialisation and setup
         if not pygame.get_init():
