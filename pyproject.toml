@@ -1,6 +1,6 @@
 [project]
 name = "midi-visualiser"
-version = "0.1.6"
+version = "0.1.7"
 description = "A real-time MIDI player and visualiser built in Python."
 readme = "README.md"
 authors = [

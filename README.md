@@ -64,19 +64,13 @@ This project uses [uv](https://github.com/astral-sh/uv) as a package and virtual
    cd midi-visualiser
    ```
 
-2. **Create the virtual environment using [uv](https://github.com/astral-sh/uv)**:
+2. **Run the application using [uv](https://github.com/astral-sh/uv)**:
 
    ```sh
-   uv venv
+   uv run midi-visualiser
    ```
 
-3. **Install the project in editable mode**:
-
-   ```sh
-   uv pip install -e .
-   ```
-
-   This will allow use of the `midi-visualiser` command such that any changes made to the source code will be immediately reflected.
+   This will automatically install required any packages and run the command in a virtual environment, including any changes to the source code.
 
 ## License
 
