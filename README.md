@@ -22,25 +22,25 @@ To use the tool, you can simply install it using `pip`:
 pip install midi-visualiser
 ```
 
-It can then be used in the command line through the `visualiser` command. The command has two different modes:
+It can then be used in the command line through the `midi-visualiser` command. The command has two different modes:
 
 1. **Visualising a single song**:
 
    ```shell
-   visualiser path/to/your/song.mid
+   midi-visualiser path/to/your/song.mid
    ```
 
 2. **Loading a playlist from a directory**:
 
    ```shell
-   visualiser path/to/your/songs/folder/
+   midi-visualiser path/to/your/songs/folder/
    ```
 
    When a path to a directory is provided, all `.mid` files in the directory will be loaded and can then be switched between using the left and right arrow keys.
 
 ### Example Songs
 
-The project is packaged with 10 example songs, which will be automatically loaded when the `visualiser` command is run without specifying any arguments.
+The project is packaged with 10 example songs, which will be automatically loaded when the `midi-visualiser` command is run without specifying any arguments.
 
 ## Playback Controls
 
@@ -76,7 +76,7 @@ This project uses [uv](https://github.com/astral-sh/uv) as a package and virtual
    uv pip install -e .
    ```
 
-   This will allow use of the `visualiser` command such that any changes made to the source code will be immediately reflected.
+   This will allow use of the `midi-visualiser` command such that any changes made to the source code will be immediately reflected.
 
 ## License
 
