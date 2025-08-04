@@ -70,7 +70,7 @@ This project uses [uv](https://github.com/astral-sh/uv) as a package and virtual
    uv run midi-visualiser
    ```
 
-   This will automatically install required any packages and run the command in a virtual environment, including any changes to the source code.
+   This will automatically install any required packages and run the command in a virtual environment, including any changes to the source code.
 
 ## License
 
