@@ -1,5 +1,7 @@
 # Python MIDI Visualiser 🎹
 
+[![PyPI Version](https://img.shields.io/pypi/v/midi-visualiser)](https://pypi.org/project/midi-visualiser/)
+
 A real-time MIDI player and visualiser built with Python and Pygame.
 
 This tool can be run from the command line to open any `.mid` file as a dynamic, scrolling piano roll, synchronising the on-screen notes with the audio output.
