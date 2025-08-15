@@ -1,10 +1,10 @@
 [project]
 name = "midi-visualiser"
-version = "0.1.9"
+version = "0.1.10"
 description = "A real-time MIDI player and visualiser built in Python."
 readme = "README.md"
 authors = [
-    { name = "benjaminrall", email = "benr2508@aol.com" }
+    { name = "Benjamin Rall", email = "benr2508@aol.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
@@ -15,6 +15,7 @@ dependencies = [
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows",
 ]
 
 [project.urls]
