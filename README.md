@@ -11,7 +11,7 @@ This tool can be run from the command line to open any `.mid` file as a dynamic,
 ## Key Features
 
 - 🎵 **MIDI File Parsing**: Uses the Mido library to load and interpret note events and channels from MIDI files
-- 🎹 **Real-time Piano Roll**: Dynamically renders scrolling notes as the music plays
+- 🎹 **Piano Roll**: Dynamically renders scrolling notes as the music plays
 - 🔊 **Synchronised Audio**: Plays the MIDI data through Pygame's audio mixer, synchronised with the visuals
 - ⏯️ **Playback Control**: Includes standard playback features like play, pause, and restart, controlled via keyboard shortcuts
 - 🎨 **Multi-channel Colouring**: Automatically assigns different, clear colours to notes from different MIDI channels
